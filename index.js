@@ -1,33 +1,60 @@
-// function to create elements in the list 
-function content(list){
-    const li = document.createElement('li')
-    li.textContent = list
-    li.id = '#item'
-    document.querySelector('#shopping-list').appendChild(li)
+let items = [];
+const itemDisplay = document.getElementById('list')
+const itemInput = document.getElementById('shopping-list')
 
-    // create the clear button functionality
+//Get references to buttons and add event listeners
+const addItemButton = document.getElementById('addBtn')
+addItemButton.addEventListener('click', () => {
+    addItem()
+});
 
-    const clearBtn = document.querySelector('#clear-btn')
-    clearBtn.addEventListener('click', function(e){
-        e.preventDefault()
-        const clearList = document.querySelector('#items')
-        clearList.target.parentNode.remove()
+
+const addClearList = document.getElementById('clearBtn')
+addClearList.addEventListener('click', () => {
+    clearList()
+});
+
+const addMarkAsPurchased = document.getElementById('purchaseBtn')
+addMarkAsPurchased.addEventListener('click', () => {
+    markAsPurchased()
+});
+
+//function to add item to the list
+function addItem() {
+    items.push({
+        name: itemInput.value,
+        purchased: false
     })
-
-    // Create the functionality to indicate items purchased by striking them through
-
-    const purchaseBtn = document.querySelector('#purchase-btn')
-    purchaseBtn.addEventListener('click', function(e){
-        const strke = document.createElement<'strike'>
-        document.querySelectorAll('#item').appendChild()
-    })
+    console.log(items.length)
+    displayList()
 }
 
-// Creates the add items button functionality to add the value in the input field to the list
+//this function is used to refresh items on the list view.
+function displayList() {
 
-const add = document.querySelector('#add-btn')
-add.addEventListener('click', function(e){
-    e.preventDefault()
-    const listItems = document.querySelector('#text-box')
-    content(listItems.value)
-})
+    console.log(items)
+    itemDisplay.innerHTML = '' // clear current list
+
+    //Loop through items array and create list items
+    for (let i = 0; i < items.length; i++) {
+        const listItem = document.createElement('li');
+        listItem.textContent = items[i].name
+        itemDisplay.appendChild(listItem)
+        listItem.classList.toggle('purchased', items[i].purchased)
+    }
+
+
+}
+//add a function ClearList (indorder to clear the list)
+function clearList() {
+    items = []
+    displayList()
+
+}
+//add function markAsPurchased
+function markAsPurchased() {
+    for (let i = 0; i < items.length; i++) {
+        items[i].purchased = true; // sets status of all purchased items as true
+    }
+    displayList() //// Update the displayed list to reflect changes
+}

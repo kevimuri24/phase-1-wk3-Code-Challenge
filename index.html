@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping List</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .purchased{
+        text-decoration: line-through;
+    }
+</style>
+  <title>Shopping List</title>
 </head>
 <body>
   <h1>Shopping List</h1>
-  <ul id="shopping-list">
-  </ul>
-      <form method="post">    
-      <input type="text" id="text-box" placeholder="Add an item!">
-      <button type="button" id="add-btn">add</button>
-      <button type="button" id="purchase-btn">purchase</button>
-      <button type="button" id="clear-btn">Clear list</button>
-      </form> 
-    <script src="index.js"></script>
+ 
+  <input type="text" id="shopping-list" placeholder="Add items to list!">
+  <br/>
+  <ul id="list"></ul>
+ <button id="addBtn">Add</button>
+ <button id="purchaseBtn">Purchase</button>
+ <button id="clearBtn">Clear</button>
+
+
+ <script src="index.js"></script>
 </body>
 </html>
