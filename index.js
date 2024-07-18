@@ -2,29 +2,27 @@
 function content(list){
     const li = document.createElement('li')
     li.textContent = list
+    li.id = '#item'
     document.querySelector('#shopping-list').appendChild(li)
 }
 
 
-const add = document.querySelector('#add')
+const add = document.querySelector('#add-btn')
 add.addEventListener('click', function(e){
     e.preventDefault()
-    const listItems = document.querySelector('#user-input')
+    const listItems = document.querySelector('#text-box')
     content(listItems.value)
 })
 
-const dltBtn = document.querySelector('#clear')
-    dltBtn.addEventListener('click', function(e){
-        e.preventDefault()
-       if(e.target.idName === 'clear'){
-        const li = e.target.parentElement
-        document.querySelector('#shopping-list ul li').parentNode.removeChild(li)
-       }
+const dltBtn = document.querySelector('#clear-list-btn').addEventListener('click', function(){
+    const clear = document.querySelectorAll('#item')
+    clear.forEach((e)=>{
+        e.parentElement.remove()
     })
+})
 
-const purchased = document.querySelector('#purchased')
+const purchased = document.querySelector('#purchase-btn')
 purchased.addEventListener('click', function(e){
-
-    const strke = document.elementCreateOptions('strike')
-    document.querySelector('#shopping-list ul li').appendChild(strke) 
+    const strke = value.strike()
+    document.getElementById('#shopping-list').appendChild(strke) 
 })
