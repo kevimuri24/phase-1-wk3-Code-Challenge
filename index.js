@@ -1,37 +1,42 @@
-// function to create elements in the list 
+
+const inputItems = document.querySelector('#input-item')
+const itemList = document.querySelector('#item-list')
+
+// Create Array to hold items in list
+let list =[]
+list.push(itemList)
+
+// Create function to display list items
 function content(list){
-    const li = document.createElement('li')
+    let li = document.createElement('li')
     li.textContent = list
     li.id = '#item'
-    document.querySelector('#shopping-list').appendChild(li)
+    document.querySelector('#item-list').appendChild(li)
 
-    // Create the functionality to indicate items purchased by striking them through
-const purchaseBtn = document.querySelector('#purchase-btn')
-purchaseBtn.addEventListener('click', function(e){
-    const strke = document.createElement<'strike'>
-    document.querySelectorAll('#item').appendChild()
-})
+    // Adding a marked purchased button on items to give them the option of choosing one thing or many
+    const markPurchased = document.createElement('button')
+    markPurchased.textContent = 'purchased'
+    li.appendChild(markPurchased)
 
-// create the clear button functionality
-const addClearBtn = document.getElementById('addclear-btn')
-addClearBtn.addEventListener('click', ()=>{
-
-})
+    // Marking an item as purchased by adding a Strikethrough 
+    markPurchased.addEventListener('click', e => {
+        e.target.parentNode.classList.toggle('purchased')
+    })
 
 }
 
-function addItems(){
-    list = []
-    content()
-}
-
-// Creates the add items button functionality to add the value in the input field to the list
+// Create function that adds an item when the add button is clicked
 const add = document.querySelector('#add-btn')
 add.addEventListener('click', function(e){
     e.preventDefault()
-    const listItems = document.querySelector('#text-box')
+    const listItems = document.querySelector('#input-item')
     content(listItems.value)
 })
 
-
-
+// Create function that clears the list items
+const clearList = document.querySelector('#clear-btn')
+clearList.addEventListener('click', e => {
+    while (itemList.firstChild) {
+        itemList.removeChild(itemList.firstChild);
+    }
+})

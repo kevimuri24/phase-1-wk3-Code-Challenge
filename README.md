@@ -17,5 +17,8 @@ This small app adds items to a list, clears them and indicates if they are purch
 4. Clear list items
     The last function is to clear our list as there needs to be a way to refresh our list without reloading the page. This can be done by using our [#item] id to clear our list and allow the user to start over.
 
+5. Create array to add list
+    I've created an [array] to handle the list items. However the list remains empty until, the user adds an item into the list.
+
 # Conclusion
 This app is a simple one and does not have alot of styling, but we can make it more complex using css or some bootstrap. I will continue to update as we go.
